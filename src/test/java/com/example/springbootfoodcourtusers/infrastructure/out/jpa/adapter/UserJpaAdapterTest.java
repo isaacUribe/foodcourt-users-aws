@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.security.crypto.password.PasswordEncoder;
+
 
 import static org.mockito.Mockito.*;
 
@@ -39,8 +39,6 @@ class UserJpaAdapterTest {
     UserJpaAdapter userJpaAdapter;
     @Mock
     UserValidation userValidation;
-    @Mock
-    PasswordEncoder passwordEncoder;
 
     @Mock
     RolRepository rolRepository;

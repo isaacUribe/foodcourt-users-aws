@@ -14,5 +14,5 @@ public enum Permission {
     EMPLOYEE_READ_ORDER_PENDING("employee:readorderpending"),
     CUSTOMER_READ_ALL_RESTAURANT("customer:readallrestaurant");
     @Getter
-    private final String permission;
+    private final String authorization;
 }

@@ -1,7 +1,5 @@
 package com.example.springbootfoodcourtusers.domain.model;
 
-
-
 import java.time.LocalDate;
 public class User {
     private Long id;
@@ -17,16 +15,12 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String name, String lastName, String document, String cellPhone, LocalDate birthdate, String email, String password, Rol rol) {
-        this.id = id;
+    public User(String name, String lastName, String cellPhone, String email, String password) {
         this.name = name;
         this.lastName = lastName;
-        this.document = document;
         this.cellPhone = cellPhone;
-        this.birthdate = birthdate;
         this.email = email;
         this.password = password;
-        this.rol = rol;
     }
 
     public Long getId() {

@@ -4,6 +4,7 @@ import com.example.springbootfoodcourtusers.domain.model.User;
 import com.example.springbootfoodcourtusers.domain.spi.UserPersistancePort;
 import com.example.springbootfoodcourtusers.infrastructure.exception.IdNotExit;
 import com.example.springbootfoodcourtusers.infrastructure.exception.InfrasEmaiExist;
+import com.example.springbootfoodcourtusers.infrastructure.exception.InfrasUserNotFound;
 import com.example.springbootfoodcourtusers.infrastructure.exception.InfrasWrongRolOwner;
 import com.example.springbootfoodcourtusers.infrastructure.out.jpa.entity.RolEntity;
 import com.example.springbootfoodcourtusers.infrastructure.out.jpa.entity.UserEntity;
@@ -110,6 +111,9 @@ public class UserJpaAdapter implements UserPersistancePort {
     @Override
     public User getUserByEmail(String email) {
         Optional<UserEntity> userOptional = userRepository.findByEmail(email);
+        if (!userOptional.isPresent()){
+            throw new InfrasUserNotFound();
+        }
         UserEntity user = userOptional.get();
         return userEntityMapper.toUser(user);
     }

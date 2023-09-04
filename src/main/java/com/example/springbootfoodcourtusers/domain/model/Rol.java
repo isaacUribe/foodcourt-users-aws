@@ -2,15 +2,15 @@ package com.example.springbootfoodcourtusers.domain.model;
 
 public class Rol {
     private Long id;
-    private String  rol;
+    private String rolUser;
     private String description;
 
     public Rol() {
     }
 
-    public Rol(Long id, String rol, String description) {
+    public Rol(Long id, String rolUser, String description) {
         this.id = id;
-        this.rol = rol;
+        this.rolUser = rolUser;
         this.description = description;
     }
 
@@ -22,12 +22,12 @@ public class Rol {
         this.id = id;
     }
 
-    public String getRol() {
-        return rol;
+    public String getRolUser() {
+        return rolUser;
     }
 
-    public void setRol(String rol) {
-        this.rol = rol;
+    public void setRolUser(String rolUser) {
+        this.rolUser = rolUser;
     }
 
     public String getDescription() {
