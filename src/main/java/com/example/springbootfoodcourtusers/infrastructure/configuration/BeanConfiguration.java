@@ -11,7 +11,7 @@ import com.example.springbootfoodcourtusers.domain.validation.UserValidation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.crypto.password.PasswordEncoder;
+
 
 @Configuration
 @RequiredArgsConstructor
@@ -20,13 +20,13 @@ public class BeanConfiguration {
     private final UserEntityMapper userEntityMapper;
     private final UserValidation userValidation;
     private final RolRepository rolRepository;
-    private final PasswordEncoder passwordEncoder;
+
 
 
 
     @Bean
     public UserPersistancePort userPersistancePort(){
-        return new UserJpaAdapter(userRepository,userEntityMapper,rolRepository, passwordEncoder);
+        return new UserJpaAdapter(userRepository,userEntityMapper,rolRepository);
     }
 
     @Bean

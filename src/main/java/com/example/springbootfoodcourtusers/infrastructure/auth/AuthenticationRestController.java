@@ -16,16 +16,8 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class AuthenticationRestController {
 
-    private final AuthenticationService authenticationService;
     private final UserHandler userHandler;
 
-    @Operation(summary = "Authenticate")
-    @ApiResponse(responseCode = "200", description = "OK / Authenticated")
-    @ApiResponse(responseCode = "400", description = "Bad Request")
-    @PostMapping("/authenticate")
-    public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request){
-        return ResponseEntity.ok(authenticationService.authenticate(request));
-    }
     @Operation(summary = "Find user in the database by email")
     @ApiResponse(responseCode = "200", description = "OK / User found")
     @ApiResponse(responseCode = "400", description = "Bad Request")

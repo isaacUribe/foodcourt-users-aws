@@ -11,7 +11,7 @@ import com.example.springbootfoodcourtusers.infrastructure.out.jpa.mapper.UserEn
 import com.example.springbootfoodcourtusers.infrastructure.out.jpa.repository.RolRepository;
 import com.example.springbootfoodcourtusers.infrastructure.out.jpa.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -22,7 +22,7 @@ public class UserJpaAdapter implements UserPersistancePort {
     private final UserRepository userRepository;
     private final UserEntityMapper userEntityMapper;
     private final RolRepository rolRepository;
-    private final PasswordEncoder passwordEncoder;
+
 
 
     @Override
@@ -31,7 +31,6 @@ public class UserJpaAdapter implements UserPersistancePort {
         if (!optionalRol.isPresent()){
             throw new IdNotExit();
         }
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
         if (!user.getRol().getId().equals(2L)){
             throw new InfrasWrongRolOwner();
         }
@@ -48,7 +47,6 @@ public class UserJpaAdapter implements UserPersistancePort {
         if (!optionalRol.isPresent()){
             throw new IdNotExit();
         }
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
         if (!user.getRol().getId().equals(4L)){
             throw new InfrasWrongRolOwner();
         }
@@ -65,7 +63,7 @@ public class UserJpaAdapter implements UserPersistancePort {
         if (!optionalRol.isPresent()){
             throw new IdNotExit();
         }
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+
         if (!user.getRol().getId().equals(5L)){
             throw new InfrasWrongRolOwner();
         }
@@ -82,7 +80,7 @@ public class UserJpaAdapter implements UserPersistancePort {
         if (!optionalRol.isPresent()){
             throw new IdNotExit();
         }
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+
         if (!user.getRol().getId().equals(1L)){
             throw new InfrasWrongRolOwner();
         }
