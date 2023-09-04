@@ -1,4 +1,4 @@
-package com.example.springbootfoodcourtusers.infrastructure.auth;
+package com.example.springbootfoodcourtusers.infrastructure.input.rest;
 
 import com.example.springbootfoodcourtusers.application.dto.UserRequest;
 import com.example.springbootfoodcourtusers.application.dto.UserResponse;
@@ -11,12 +11,38 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
-@RequestMapping("/auth")
-@RequiredArgsConstructor
-public class AuthenticationRestController {
+import java.util.List;
 
+@RestController
+@RequestMapping("/user")
+@RequiredArgsConstructor
+public class UserRestController {
     private final UserHandler userHandler;
+    @Operation(summary = "Create a Owner")
+    @ApiResponse(responseCode = "201", description = "Owner created successfully")
+    @ApiResponse(responseCode = "403", description = "Unauthorized / Invalid Token")
+    @ApiResponse(responseCode = "400", description = "Bad Request")
+    @PostMapping("/createOwner")
+    public ResponseEntity<Void> saveOwner(@RequestBody UserRequest userRequest){
+        userHandler.createOwner(userRequest);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+    @Operation(summary = "Get all users from the database")
+    @ApiResponse(responseCode = "200", description = "All users found")
+    @ApiResponse(responseCode = "403", description = "Unauthorized / Invalid Token")
+    @GetMapping("/getAll")
+    public ResponseEntity<List<UserResponse>> getAllUsers(){
+        return ResponseEntity.ok(userHandler.gellAllUsers());
+    }
+    @Operation(summary = "Create a Employee")
+    @ApiResponse(responseCode = "201", description = "Employee created successfully")
+    @ApiResponse(responseCode = "403", description = "Unauthorized / Invalid Token")
+    @ApiResponse(responseCode = "400", description = "Bad Request")
+    @PostMapping("/createEmployee")
+    public ResponseEntity<Void> saveEmployee(@RequestBody UserRequest userRequest){
+        userHandler.createEmployee(userRequest);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
 
     @Operation(summary = "Find user in the database by email")
     @ApiResponse(responseCode = "200", description = "OK / User found")
@@ -48,5 +74,4 @@ public class AuthenticationRestController {
         userHandler.createAdmin(userRequest);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
-
 }
