@@ -1,7 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/foodcourt
-    username: root
+    url: jdbc:mysql://database-1.cxhez1bhipyf.us-east-2.rds.amazonaws.com:3306/foodcourt
+    username: admin
+    password: admin123
 
   application:
     name: foodcourtusers
